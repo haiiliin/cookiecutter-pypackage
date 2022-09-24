@@ -1,0 +1,58 @@
+# .github/release-drafter.yml
+
+name-template: 'V$RESOLVED_VERSION 🌈'
+tag-template: 'v$RESOLVED_VERSION'
+filter-by-commitish: true
+commitish: main
+categories:
+  - title: '🚨 Breaking changes'
+    labels:
+      - 'breaking change'
+  - title: '🚀 Features'
+    labels:
+      - 'feature'
+      - 'new feature'
+      - 'enhancement'
+      - 'customization'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'fix'
+      - 'bugfix'
+      - 'bug'
+      - 'test'
+  - title: '🧰 Maintenance'
+    label: 'chore'
+  - title: '📝 Documentation'
+    labels:
+      - 'documentation'
+      - 'docs'
+      - 'doc'
+  - title: 'Backports'
+    labels:
+      - 'backport'
+  - title: '🤔 Miscellaneous'
+    labels:
+      - 'misc'
+      - 'patch'
+      - '*'
+version-template: '$MAJOR.$MINOR.$PATCH'
+change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+version-resolver:
+  major:
+    labels:
+      - 'major'
+  minor:
+    labels:
+      - 'minor'
+  patch:
+    labels:
+      - 'patch'
+  default: patch
+template: |
+  ## Changes
+
+  $CHANGES
+
+  **Full Changelog**: https://github.com/haiiliin/python-package/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
+

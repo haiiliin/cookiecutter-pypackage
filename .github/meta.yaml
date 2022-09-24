@@ -1,0 +1,22 @@
+package:
+  name: python-package
+  version: "{{ GIT_DESCRIBE_TAG }}"
+
+build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+  skip: True # [py<37]
+
+source:
+  path: ../
+
+requirements:
+  build:
+    - python
+    - setuptools_scm
+  run:
+    - python
+
+about:
+  summary: Type hints for Abaqus/Python scripting
+  home: https://github.com/haiiliin/python-package
+  license: MIT
