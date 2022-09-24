@@ -16,7 +16,7 @@ try:
     version = pkg_resources.get_distribution('python-package').version
 except pkg_resources.DistributionNotFound:
     version = _default_version
-version = release
+release = version
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
