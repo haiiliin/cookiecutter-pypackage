@@ -40,4 +40,9 @@ setuptools.setup(
     python_requires='>=3.7',
     install_requires=['setuptools_scm'],
     packages=setuptools.find_packages('.'),
+    entry_points={
+        'console_scripts': [
+            'python_package = python_package.__main__:cli',
+        ]
+    },
 )
