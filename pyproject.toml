@@ -1,0 +1,49 @@
+# pyproject.toml, for more information about configuration options, see 
+# https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
+
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+
+[project]
+name = "python-package"
+authors = [
+  { name="WANG Hailin", email="hailin.wang@connect.polyu.hk" },
+]
+description = "My template repository for Python packages"
+readme = "README.md"
+dynamic = ["version"]
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    'sphinx-toolbox',
+]
+
+[project.urls]
+"Homepage" = "https://github.com/haiiliin/python-package/"
+"Documentation" = "https://python-package.readthedocs.io/"
+
+[project.scripts]
+abqpy = "python_package.__main__:cli"
+
+[tool.setuptools_scm]
+root = "."
+relative_to = "__file__"
+version_scheme = "post-release"
+write_to = "python_package//_version.py"
+fallback_version = "0.0.1"
+
+[tool.black]
+line-length = 120
+target-version = ['py37', 'py38', 'py39', 'py310', 'py311']
+include = '(python_package/.*\.py)'

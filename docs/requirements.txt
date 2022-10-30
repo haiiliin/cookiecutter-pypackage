@@ -1,5 +1,1 @@
-GitPython
-numpydoc
-sphinx
 sphinx-copybutton
-sphinx-codeautolink

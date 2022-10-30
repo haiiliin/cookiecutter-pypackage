@@ -3,7 +3,7 @@ from pathlib import Path
 try:
     from ._version import version as _default_version
 except ImportError:
-    _default_version = '0.0.1-unknown'
+    _default_version = "0.0.1"
 
 
 def _get_version():
@@ -14,11 +14,11 @@ def _get_version():
     root = Path(__file__).resolve().parents[1]
     if (root / ".git").exists() and not (root / ".git/shallow").exists():
         import setuptools_scm
+
         try:
             return setuptools_scm.get_version(
                 root=str(root),
-                version_scheme="release-branch-semver",
-                local_scheme="node-and-date",
+                version_scheme="post-release",
                 fallback_version=_default_version,
             )
         except Exception:
