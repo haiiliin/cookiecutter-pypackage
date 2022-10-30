@@ -48,4 +48,4 @@ template: |
 
   $CHANGES
 
-  **Full Changelog**: https://github.com/haiiliin/python-package/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
+  **Full Changelog**: https://github.com/haiiliin/pypackage/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
