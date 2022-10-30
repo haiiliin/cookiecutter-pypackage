@@ -4,5 +4,5 @@
 
 ```shell
 pip install cookiecutter
-cookiecutter gh:haiiliin/pypackage
+cookiecutter gh:haiiliin/cookiecutter-pypackage
 ```
