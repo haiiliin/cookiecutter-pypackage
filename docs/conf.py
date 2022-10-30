@@ -9,7 +9,7 @@
 import os
 import sys
 
-project = '{{cookiecutter.package_name}}'
+project = '{{cookiecutter.project_name}}'
 copyright = '2022, WANG Hailin'
 author = 'WANG Hailin'
 
