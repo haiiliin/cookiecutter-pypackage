@@ -30,7 +30,7 @@ dependencies = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/haiiliin/{{cookiecutter.repo_name}}/"
+"Homepage" = "https://github.com/{{cookiecutter.github_account}}/{{cookiecutter.repo_name}}/"
 "Documentation" = "https://{{cookiecutter.project_name}}.readthedocs.io/"
 
 [project.scripts]

@@ -2,6 +2,7 @@
     "full_name": "Wang Hailin",
     "email": "hailin.wang@connect.polyu.hk",
     "project_name": "pypackage",
+    "github_account": "haiilin",
     "repo_name": "pypackage",
     "short_description": "My template repository for Python packages"
 }
