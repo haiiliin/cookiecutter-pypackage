@@ -5,5 +5,8 @@
     "project_name": "pypackage",
     "package_name": "pypackage",
     "github_account": "haiiliin",
-    "short_description": "My template repository for Python packages"
+    "short_description": "My template repository for Python packages",
+    "_copy_without_render": [
+        "*.github"
+    ]
 }
