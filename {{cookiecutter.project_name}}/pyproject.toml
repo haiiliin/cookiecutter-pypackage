@@ -9,7 +9,7 @@ name = "{{cookiecutter.project_name}}"
 authors = [
   { name="{{cookiecutter.full_name}}", email="{{cookiecutter.email}}" },
 ]
-description = "{{cookiecutter.project_short_description}}"
+description = "{{cookiecutter.short_description}}"
 readme = "README.md"
 dynamic = ["version"]
 requires-python = ">=3.7"

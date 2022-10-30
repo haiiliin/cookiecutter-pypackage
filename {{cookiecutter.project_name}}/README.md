@@ -1,6 +1,6 @@
 # {{cookiecutter.repo_name}}
 
-{{cookiecutter.project_short_description}}
+{{cookiecutter.short_description}}
 
 - GitHub: https://github.com/{{cookiecutter.github_account}}/{{cookiecutter.repo_name}}/
 - Documentation: https://{{cookiecutter.project_name}}.readthedocs.io/en/latest/
