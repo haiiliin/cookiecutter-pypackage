@@ -1,6 +1,6 @@
 # {{cookiecutter.repo_name}}
 
-My template repository for Python packages
+{{cookiecutter.project_short_description}}
 
 - GitHub: https://github.com/haiiliin/{{cookiecutter.repo_name}}/
 - Documentation: https://{{cookiecutter.package_name}}.readthedocs.io/en/latest/

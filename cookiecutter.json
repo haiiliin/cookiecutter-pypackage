@@ -3,5 +3,5 @@
     "email": "hailin.wang@connect.polyu.hk",
     "project_name": "pypackage",
     "repo_name": "pypackage",
-    "project_short_description": "My template repository for Python packages"
+    "short_description": "My template repository for Python packages"
 }
