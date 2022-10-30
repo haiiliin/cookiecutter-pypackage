@@ -7,6 +7,6 @@
     "github_account": "haiiliin",
     "short_description": "My template repository for Python packages",
     "_copy_without_render": [
-        "*.github"
+        "*.github/workflows"
     ]
 }
