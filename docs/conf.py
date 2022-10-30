@@ -9,16 +9,16 @@
 import os
 import sys
 
-project = 'pypackage'
+project = '{{cookiecutter.package_name}}'
 copyright = '2022, WANG Hailin'
 author = 'WANG Hailin'
 
 try:
-    import pypackage
-    release = version = pypackage.__version__.split('+')[0]
+    import {{cookiecutter.package_name}}
+    release = version = {{cookiecutter.package_name}}.__version__.split('+')[0]
 except (ImportError, AttributeError):
     import warnings
-    warnings.warn('pypackage is not installed, using 0.0.1')
+    warnings.warn('{{cookiecutter.package_name}} is not installed, using 0.0.1')
     release = version = '0.0.1'
 sys.path.insert(0, os.path.abspath('..'))
 

@@ -5,7 +5,7 @@
 requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
 
 [project]
-name = "pypackage"
+name = "{{cookiecutter.package_name}}"
 authors = [
   { name="WANG Hailin", email="hailin.wang@connect.polyu.hk" },
 ]
@@ -30,20 +30,20 @@ dependencies = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/haiiliin/pypackage/"
-"Documentation" = "https://pypackage.readthedocs.io/"
+"Homepage" = "https://github.com/haiiliin/{{cookiecutter.repo_name}}/"
+"Documentation" = "https://{{cookiecutter.project_name}}.readthedocs.io/"
 
 [project.scripts]
-abqpy = "pypackage.__main__:cli"
+abqpy = "{{cookiecutter.package_name}}.__main__:cli"
 
 [tool.setuptools_scm]
 root = "."
 relative_to = "__file__"
 version_scheme = "post-release"
-write_to = "pypackage/_version.py"
+write_to = "{{cookiecutter.package_name}}/_version.py"
 fallback_version = "0.0.1"
 
 [tool.black]
 line-length = 120
 target-version = ['py37', 'py38', 'py39', 'py310', 'py311']
-include = '(pypackage/.*\.py)'
+include = '({{cookiecutter.package_name}}/.*\.py)'
