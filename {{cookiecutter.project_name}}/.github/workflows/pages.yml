@@ -15,7 +15,7 @@ on:
   #   types: [opened, reopened, synchronize]
   workflow_dispatch:
 jobs:
-  build-pages:
+  build:
     runs-on: ubuntu-latest
     concurrency: pages_staging_environment
     strategy:

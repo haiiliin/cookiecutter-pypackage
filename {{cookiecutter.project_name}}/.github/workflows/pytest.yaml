@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-pytest:
+  build:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
