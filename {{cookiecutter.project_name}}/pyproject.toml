@@ -47,3 +47,6 @@ fallback_version = "0.0.1"
 line-length = 120
 target-version = ['py37', 'py38', 'py39', 'py310', 'py311']
 include = '({{cookiecutter.package_name}}/.*\.py)'
+
+[tool.pytest.ini_options]
+testpaths = ["."]
