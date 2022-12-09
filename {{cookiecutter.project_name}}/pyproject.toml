@@ -34,7 +34,7 @@ dependencies = [
 "Documentation" = "https://{{cookiecutter.project_name}}.readthedocs.io/"
 
 [project.scripts]
-abqpy = "{{cookiecutter.package_name}}.__main__:cli"
+{{cookiecutter.package_name}} = "{{cookiecutter.package_name}}.__main__:cli"
 
 [tool.setuptools_scm]
 root = "."
