@@ -25,9 +25,6 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-dependencies = [
-    'sphinx-toolbox',
-]
 
 [project.urls]
 "Homepage" = "https://github.com/{{cookiecutter.github_account}}/{{cookiecutter.repo_name}}/"
@@ -35,6 +32,9 @@ dependencies = [
 
 [project.scripts]
 {{cookiecutter.package_name}} = "{{cookiecutter.package_name}}.__main__:cli"
+
+[tool.setuptools.dynamic.dependencies]
+file = ["requirements.txt"]
 
 [tool.setuptools_scm]
 root = "."

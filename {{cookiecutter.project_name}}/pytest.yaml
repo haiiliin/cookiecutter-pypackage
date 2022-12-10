@@ -2,7 +2,16 @@ name: pytest
 
 on:
   push:
+    branches:
+    - main
+    paths:
+    - 'pypandoctemplates/**'
+    - 'docs/source/**'
   pull_request:
+    types: [opened, reopened, synchronize]
+    paths:
+    - 'pypandoctemplates/**'
+    - 'docs/source/**'
   workflow_dispatch:
 
 concurrency:
