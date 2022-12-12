@@ -38,7 +38,6 @@ file = ["requirements.txt"]
 
 [tool.setuptools_scm]
 root = "."
-relative_to = "__file__"
 version_scheme = "post-release"
 write_to = "{{cookiecutter.package_name}}/_version.py"
 fallback_version = "0.0.1"
@@ -49,4 +48,5 @@ target-version = ['py37', 'py38', 'py39', 'py310', 'py311']
 include = '({{cookiecutter.package_name}}/.*\.py)'
 
 [tool.pytest.ini_options]
-testpaths = ["."]
+testpaths = ["{{cookiecutter.package_name}}", "tests"]
+addopts = "-s --cov={{cookiecutter.package_name}} --cov-report=xml --cov-report=html --cov-report=term-missing --doctest-modules"

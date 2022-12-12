@@ -1,40 +1,59 @@
-name: Release Drafter
+name: release-drafter
+
 on:
   push:
     branches: [ "main" ]
-  # pull_request event is required only for autolabeler
   pull_request:
-    # Only following types are handled by the action, but one can default to all as well
     types: [opened, reopened, synchronize]
-  # pull_request_target event is required for autolabeler to support PRs from forks
-  # pull_request_target:
-  #   types: [opened, reopened, synchronize]
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+  pull-requests: write
 
 jobs:
-  update-release:
-    permissions:
-      # write permission is required to create a github release
-      contents: write
-      # write permission is required for autolabeler
-      # otherwise, read permission is required at least
-      pull-requests: write
+  update:
     runs-on: ubuntu-latest
 
     steps:
-      # (Optional) GitHub Enterprise requires GHE_HOST variable set
-      #- name: Set GHE_HOST
-      #  run: |
-      #    echo "GHE_HOST=${GITHUB_SERVER_URL##https:\/\/}" >> $GITHUB_ENV
-
-      # Drafts your next Release notes as Pull Requests are merged into "master"
       - uses: release-drafter/release-drafter@v5
-        # (Optional) specify config name to use, relative to .github/. Default: release-drafter.yml
+        id: drafter
         with:
           config-name: release-drafter.yml
-        #   disable-autolabeler: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Checkout the repository
+      - uses: actions/checkout@v3
+
+      # Setup Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build
+      - name: Tag the next version
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git tag -a ${{ steps.drafter.outputs.tag }} -m "Release ${{ steps.drafter.outputs.tag }}"
+
+      # Build the Python package
+      - name: Build package
+        run: |
+          python -m build
+          git tag -d ${{ steps.drafter.outputs.tag }}
+
+      # Upload the Python package binaries
+      - name: Upload binaries to release
+        run: |
+          gh release upload --clobber ${{ env.VERSION }} ${{ env.FILES }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.drafter.outputs.tag }}
+          FILES: >
+            dist/${{ github.event.repository.name }}-${{ steps.calver.outputs.version }}.tar.gz
+            dist/${{ github.event.repository.name }}-${{ steps.calver.outputs.version }}-py3-none-any.whl
