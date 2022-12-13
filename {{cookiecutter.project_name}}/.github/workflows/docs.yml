@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  sphinx:
     runs-on: ubuntu-latest
     concurrency: pages_staging_environment
     strategy:
