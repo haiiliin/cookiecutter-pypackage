@@ -11,7 +11,7 @@ authors = [
 ]
 description = "{{cookiecutter.short_description}}"
 readme = "README.md"
-dynamic = ["version"]
+dynamic = ["version", "dependencies", "optional-dependencies"]
 requires-python = ">=3.7"
 classifiers = [
     "Programming Language :: Python",
@@ -27,7 +27,7 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/{{cookiecutter.github_account}}/{{cookiecutter.repo_name}}/"
+"Homepage" = "https://github.com/{{cookiecutter.github_account}}/{{cookiecutter.project_name}}/"
 "Documentation" = "https://{{cookiecutter.project_name}}.readthedocs.io/"
 
 [project.scripts]
@@ -35,6 +35,12 @@ classifiers = [
 
 [tool.setuptools.dynamic.dependencies]
 file = ["requirements.txt"]
+
+[tool.setuptools.dynamic.optional-dependencies.dev]
+file = ["requirements-dev.txt"]
+
+[tool.setuptools.dynamic.optional-dependencies.docs]
+file = ["docs/requirements.txt"]
 
 [tool.setuptools_scm]
 root = "."

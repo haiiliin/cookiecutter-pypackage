@@ -1,4 +1,4 @@
-name: pytest
+name: Tests
 
 on:
   push:
@@ -8,7 +8,6 @@ on:
 concurrency:
   group: pytest-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
 
 jobs:
   pytest:
@@ -20,27 +19,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # Setup Python environment
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install pipenv
+      - name: Install pipenv and dependencies
         run: |
           python -m pip install --upgrade pip
           pip install pipenv
-      - name: Install dependencies
-        run: |
           pipenv install --dev --python ${{ matrix.python-version }}
           pipenv graph
-
-      # Run flake8 and pytest
-      - name: Lint with flake8
-        run: |
-          # stop the build if there are Python syntax errors or undefined names
-          pipenv run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-          # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-          pipenv run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Test with pytest
         run: |
+          pipenv run flake8
           pipenv run pytest
