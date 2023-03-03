@@ -21,38 +21,3 @@ jobs:
           config-name: release-drafter.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # Checkout the repository
-      - uses: actions/checkout@v3
-
-      # Setup Python environment
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install build
-      - name: Tag the next version
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git tag -a ${{ steps.drafter.outputs.tag }} -m "Release ${{ steps.drafter.outputs.tag }}"
-
-      # Build the Python package
-      - name: Build package
-        run: |
-          python -m build
-          git tag -d ${{ steps.drafter.outputs.tag }}
-
-      # Upload the Python package binaries
-      - name: Upload binaries to release
-        run: |
-          gh release upload --clobber ${{ env.VERSION }} ${{ env.FILES }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERSION: ${{ steps.drafter.outputs.tag }}
-          FILES: >
-            dist/${{ github.event.repository.name }}-${{ steps.calver.outputs.version }}.tar.gz
-            dist/${{ github.event.repository.name }}-${{ steps.calver.outputs.version }}-py3-none-any.whl
